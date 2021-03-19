@@ -1,0 +1,73 @@
+docker
+
+
+// build the image
+docker build -t paddlepop25/fortunecookies:v1 .
+
+// see the image 
+docker images
+
+docker run -d -p 8080:3000 --name app100 paddlepop25/fortunecookies:v1
+
+// see browser localhost:8080 to see app running
+
+// check what is running
+docker ps
+
+// see all containers
+docker ps -a
+
+// run on another port
+docker run -d -p 8081:3000 --name app101 paddlepop25/fortunecookies:v1
+
+// see browser localhost:8081 to see app running
+
+// stop running container
+docker stop app101
+
+// check what containers are running
+docker ps
+
+// remove container
+docker rm app101
+
+// see all containers that app101 is not there
+docker ps -a
+
+// see logs for this container name
+docker logs app100
+
+// see information like port exposed, etc
+docker inspect app100
+
+// list files in container app100
+docker exec -ti app100 ls
+(will show JS files, node_modules, etc)
+
+// go in to bash
+docker exec -ti app100 bash
+
+// will display as root@5a9fb40f037b:/app# 
+// can give bash commands like ls, cat main.js etc
+// to exit out of shell, type exit
+
+// login to docker hub
+docker login
+
+// push image to docker hub
+docker push paddlepop25/fortunecookies:v1
+
+// check created image in https://hub.docker.com/repositories 
+
+// stop container from running
+docker stop app100
+
+// if want to run container again, must give different name (change app100 to something else. can use same port 8080)
+// error message:
+docker: Error response from daemon: Conflict. The container name "/app100" is already in use by container "5a9fb40f037b2e5c76e724ce33405f7e5590cad5750864b486768cf0b3d8e088". You have to remove (or rename) that container to be able to reuse that name.
+
+// pull from chuk’s image  and run
+docker pull chukmunnlee/fortune:v1
+
+// run chuk’s container
+docker run -d -p 8081:3000 --name app500 chukmunnlee/fortune:v1
