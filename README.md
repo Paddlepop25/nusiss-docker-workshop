@@ -5,6 +5,7 @@ Docker workshop conducted at NUS-ISS as part of the TFIP fullstack web developme
 Here are the instructions to build a docker image, push it to docker hub and run the container on localhost
 
 **build the image**
+<br />
 docker build -t paddlepop25/fortunecookies:v1 .
 
 **see the image**
@@ -46,11 +47,12 @@ docker inspect app100
 
 **list files in container app100**
 docker exec -ti app100 ls
-*(will show JS files, node_modules, etc)*
+_(will show JS files, node_modules, etc)_
 
 **go in to bash mode**
 docker exec -ti app100 bash
-- will display as root@5a9fb40f037b:/app# 
+
+- will display as root@5a9fb40f037b:/app#
 - can give bash commands like ls, cat main.js etc
 - to exit out of shell, type exit
 
@@ -60,16 +62,16 @@ docker login
 **push image to docker hub**
 docker push paddlepop25/fortunecookies:v1
 
-**check created image in https://hub.docker.com/repositories** 
+**check created image in https://hub.docker.com/repositories**
 
 **stop container from running**
 docker stop app100
 
 **if want to run container again, must give different name (change app100 to something else. can use same port 8080)**
 **error message:**
-*docker: Error response from daemon: Conflict. The container name "/app100" is already in use by container "long string of alphanumeric characters". You have to remove (or rename) that container to be able to reuse that name.*
+_docker: Error response from daemon: Conflict. The container name "/app100" is already in use by container "long string of alphanumeric characters". You have to remove (or rename) that container to be able to reuse that name._
 
-**pull from chuk’s image  and run**
+**pull from chuk’s image and run**
 docker pull chukmunnlee/fortune:v1
 
 **run chuk’s container**
